@@ -1,0 +1,38 @@
+data:
+  url: 
+    https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
+  raw_path: data/input.txt
+  train_split: 0.9
+
+model:
+  block_size: 256
+  n_embd: 32
+  n_head: 2
+  n_layer: 2
+  dropout: 0.2
+
+train:
+  batch_size: 16
+  max_iters: 200
+  eval_interval: 500
+  eval_iters: 200
+  learning_rate: 3e-4
+  seed: 1337
+  device: auto     # auto -> cuda if available else cpu
+  checkpoint_path: models/gpt_model.pt
+  vocab_path: models/vocab.json
+
+generation:
+  max_new_tokens: 500
+  num_samples: 3
+  sample_output_path: outputs/generated_samples.txt
+
+evaluation:
+  metrics_path: metrics.json
+  num_eval_batches: 200
+
+mlflow:
+  experiment_name: gpt-from-scratch
+  tracking_uri: https://dagshub.com/alaaf1/GPT-From-Scratch.mlflow
+  dagshub_repo_owner: alaaf1
+  dagshub_repo_name: GPT-From-Scratch

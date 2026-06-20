@@ -1,0 +1,7 @@
+data/
+models/
+outputs/
+mlruns/
+.venv/
+__pycache__/
+*.pyc

@@ -1,0 +1,43 @@
+stages:
+  download_data:
+    cmd: python src/data_download.py
+    deps:
+      - src/data_download.py
+    params:
+      - data.url
+      - data.raw_path
+    outs:
+      - data/input.txt
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - src/model.py
+      - src/data_utils.py
+      - data/input.txt
+    params:
+      - data.train_split
+      - model
+      - train
+    outs:
+      - models/gpt_model.pt
+      - models/vocab.json
+    metrics: []
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - src/model.py
+      - src/data_utils.py
+      - models/gpt_model.pt
+      - models/vocab.json
+    params:
+      - generation
+      - evaluation
+    outs:
+      - outputs/generated_samples.txt
+    metrics:
+      - metrics.json:
+          cache: false
