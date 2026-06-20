@@ -1,7 +1,7 @@
 # GPT From Scratch — Lab 2 (NLP Week 2)
 
 A decoder-only, char-level GPT built from first principles in PyTorch
-(no `nn.Transformer` / `nn.MultiheadAttention`), wired into a DVC pipeline
+(no `nn.Transformer` / `nn.MultiheadAttention`) following Andrej Karpathy's Tutorial, wired into a DVC pipeline
 with MLflow experiment tracking via DagsHub.
 
 ## Pipeline stages (`dvc.yaml`)
